@@ -46,7 +46,7 @@ let buttonPc = {
   "22": 8,
 };
 
-//asignaciones de eventos y vez y se elija el num de jugadores
+//asignaciones de eventos para despues de elegir el num de jugadores
 players1[0].addEventListener("click", function () {
   menu[0].style.display = "none";
   menuChoose[0].style.display = "flex";
@@ -180,7 +180,7 @@ function updatePanel(move, player) {
   checkPlays = [...updatedPanel];
 }
 
-//funcion donde prioriza un signo o otro dependiendo de la elecion 
+//funcion para que la computadora elija casilla y marque. Prioriza un signo o otro dependiendo de la elecion 
 function movePc(jugadas, icon) {
   let hasMoved = false;
   if (icon == "X") {
