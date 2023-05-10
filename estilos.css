@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.fondo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: linear-gradient(#444cf7 1px, transparent 1px),
+    linear-gradient(to right, #444cf7 1px, #e5e5f7 1px);
+  background-size: 20px 20px;
+  flex-direction: column;
+}
+.screenGame {
+  background-color: rgb(255, 255, 255);
+  width: 75rem;
+  height: 50rem;
+  display: none;
+  flex-wrap: wrap;
+  align-items: end;
+  box-shadow: 1rem 1rem 4rem 1rem;
+  margin-bottom: 8rem;
+}
+.menuNumPerson {
+  width: 80rem;
+  height: 50rem;
+  z-index: 2;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+h2 {
+  font-family: "Permanent Marker", cursive;
+  font-size: 2rem;
+}
+.one,
+.two,
+.X,
+.O {
+  background-color: #e5e5f7;
+  width: 3rem;
+  height: 3rem;
+  margin: 2rem;
+  font-family: "Permanent Marker", cursive;
+  font-size: 2rem;
+}
+.menuElegir {
+  width: 75rem;
+  height: 50rem;
+  text-align: center;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.panel1,
+.panel2,
+.panel3,
+.panel4,
+.panel5,
+.panel6,
+.panel7,
+.panel8,
+.panel9 {
+  width: 33.3%;
+  height: 33.4%;
+  /* background-color: rgb(255, 255, 255); */
+  flex-basis: 25rem;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  border-width: 0.2rem;
+  font-family: "Permanent Marker", cursive;
+  color: rgb(255, 0, 0);
+  background-color: #e5e5f7;
+  opacity: 0.8;
+  background-image: linear-gradient(#444cf7 1px, transparent 1px),
+    linear-gradient(to right, #444cf7 1px, hsla(0, 0%, 100%, 0.932) 1px);
+  background-size: 20px 20px;
+}
+
+.showWinner {
+  background-color: black;
+  position: absolute;
+  display: none;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  animation-name: showResult;
+  animation-duration: 2.5s;
+}
+.result {
+  color: rgb(26, 107, 10);
+  font-size: 5rem;
+  font-family: "Permanent Marker";
+  position: absolute;
+  font-weight: 100;
+  white-space: nowrap;
+}
+.tituloGame {
+  font-family: "Permanent Marker", cursive;
+  display: none;
+  margin-top: 9rem;
+  font-size: 4rem;
+  color: rgb(0, 0, 0);
+  font-weight: 300;
+  margin-bottom: 4rem;
+}
+.resetButton {
+  display: none;
+  font-family: "Permanent Marker", cursive;
+  font-size: 2rem;
+  background-color: #e5e5f7;
+  animation-name: showResult;
+  animation-duration: 2s;
+}
+@keyframes showResult {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.minHeigth {
+  display: none;
+}
+
+@media screen and (min-width: 500px) and (max-width: 2600px) {
+  .screenGame {
+    width: 50%;
+    height: 50%;
+  }
+  .panel1,
+  .panel2,
+  .panel3,
+  .panel4,
+  .panel5,
+  .panel6,
+  .panel7,
+  .panel8,
+  .panel9 {
+    flex-basis: 33.3%;
+  }
+  .fondo {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+@media screen and (max-height: 600px) {
+  .minHeigth {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    font-family: "Permanent Marker", cursive;
+    font-size: 2rem;
+    text-align: center;
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image: linear-gradient(#444cf7 1px, transparent 1px),
+      linear-gradient(to right, #444cf7 1px, #e5e5f7 1px);
+    background-size: 20px 20px;
+  }
+  
+  .fondo {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  h2 {
+    font-size: 1.6rem;
+  }
+}
