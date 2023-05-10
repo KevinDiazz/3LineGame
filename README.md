@@ -1,5 +1,5 @@
-Juego de 3 en raya creado con HTML , CSS Y JAVASCRIPT.<br>
-<n>Aspectos trabajados:<br>
+#Juego de 3 en raya creado con HTML , CSS Y JAVASCRIPT.<br>
+##<n>Aspectos trabajados:<br>
 Manipulacion de DOM, CSS(flex-box,Media querys,animaciones...) , eventos.
 <br>
 Logica aplicada en Js:<br> 
