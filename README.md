@@ -2,7 +2,7 @@
 ## Aspectos trabajados:<br>
 Manipulacion de DOM, CSS(flex-box,Media querys,animaciones...) , eventos.
 <br>
-Logica aplicada en Js:<br> 
+### Logica aplicada en Js:<br> 
 Creacion de un array imitando al tablero de la partida. <br>
 Creacion de array de dos dimensiones, donde represento [[casillas del juego donde se consigue 3 en linea] [primer indice en tablero],[segundo indice en tablero]] <br>
 Asignaciones a varios botones con  creacion de evento para cada uno de ellos <br>
