@@ -19,7 +19,7 @@ let panel = [
   ["0", "0", "0"],
 ];
 
-//posibles combinaciones
+//posibles combinaciones [[casillas del juego donde se consigue 3 en linea] [primer indice en panel],[segundo indice en panel]]
 let checkPlays = [
   [[panel[0][0] + panel[1][1] + panel[2][2]], [0, 1, 2], [0, 1, 2]], //diagonal
   [[panel[0][2] + panel[1][1] + panel[2][0]], [0, 1, 2], [2, 1, 0]], //diagonal
@@ -80,7 +80,7 @@ buttonChooseX[0].addEventListener("click", function () {
   titleGame[0].style.display = "block"
   let icon = "X";
   let oponent = "O";
-  let count = 0;       //se le asigna para evitar que se pueda marcar casilla mientra la computadora marca
+  let count = 0;                                          //se le asigna para evitar que se pueda marcar casilla mientra la computadora marca
   for (let i = 0; i < buttonPanel.length; i++) {
     buttonPanel[i].addEventListener("click", function () {
       if (buttonPanel[i].innerHTML.length == 0 && count % 2 == 0) {
