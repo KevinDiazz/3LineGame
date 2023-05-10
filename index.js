@@ -12,12 +12,14 @@ let titleGame= document.getElementsByClassName("tituloGame")
 let playAgainButton = document.getElementsByClassName("resetButton")
 let minHeigth=document.getElementsByClassName("minHeigth")
 
+//panel representa al tablero del juego 
 let panel = [
   ["0", "0", "0"],
   ["0", "0", "0"],
   ["0", "0", "0"],
 ];
 
+//posibles combinaciones
 let checkPlays = [
   [[panel[0][0] + panel[1][1] + panel[2][2]], [0, 1, 2], [0, 1, 2]], //diagonal
   [[panel[0][2] + panel[1][1] + panel[2][0]], [0, 1, 2], [2, 1, 0]], //diagonal
@@ -28,9 +30,10 @@ let checkPlays = [
   [[panel[1][0] + panel[1][1] + panel[1][2]], [1, 1, 1], [0, 1, 2]], //horizontal
   [[panel[2][0] + panel[2][1] + panel[2][2]], [2, 2, 2], [0, 1, 2]], //horizontal
 ];
-
+//variable para manejar el turno en la opcion de 2 jugadores
 let turn = ["X", "O"];
 
+//objeto utilizado para asignarle texto al boton elegido por la computadora para marcar casilla
 let buttonPc = {
   "00": 0,
   "01": 1,
@@ -43,6 +46,7 @@ let buttonPc = {
   "22": 8,
 };
 
+//asignaciones de eventos y vez y se elija el num de jugadores
 players1[0].addEventListener("click", function () {
   menu[0].style.display = "none";
   menuChoose[0].style.display = "flex";
@@ -69,13 +73,14 @@ players2[0].addEventListener("click", function () {
   }
 });
 
+//eventos para botones en la opcion de 1 jugador, a la hora de elegir signo
 buttonChooseX[0].addEventListener("click", function () {
   screenGame[0].style.display = "flex";
   menuChoose[0].style.display = "none";
   titleGame[0].style.display = "block"
   let icon = "X";
   let oponent = "O";
-  let count = 0;
+  let count = 0;       //se le asigna para evitar que se pueda marcar casilla mientra la computadora marca
   for (let i = 0; i < buttonPanel.length; i++) {
     buttonPanel[i].addEventListener("click", function () {
       if (buttonPanel[i].innerHTML.length == 0 && count % 2 == 0) {
@@ -123,6 +128,7 @@ playAgainButton[0].addEventListener("click",function(){
   location.reload();
 })
 
+//actualiza el panel y checkplays actualiza valores
 function updatePanel(move, player) {
   switch (move) {
     case "panel1":
@@ -174,6 +180,7 @@ function updatePanel(move, player) {
   checkPlays = [...updatedPanel];
 }
 
+//funcion donde prioriza un signo o otro dependiendo de la elecion 
 function movePc(jugadas, icon) {
   let hasMoved = false;
   if (icon == "X") {
@@ -192,7 +199,7 @@ function movePc(jugadas, icon) {
 
   if (!hasMoved) {
     for (let i = 0; i < jugadas.length; i++) {
-      let motion = jugadas[i][0].toString().split("");
+      let motion = jugadas[i][0].toString().split(""); // convierte a array y contamos los signos
       let x = 0;
       let O = 0;
       for (let k = 0; k < motion.length; k++) {
@@ -202,16 +209,16 @@ function movePc(jugadas, icon) {
         if (motion[k] == "O") {
           O++;
         }
-        if ((x == 1 || O == 1) && motion.includes("0")) {
-          let index = motion.findIndex((num) => num == "0");
+        if ((x == 1 || O == 1) && motion.includes("0")) {      //verifica que hay alguna y que haya casilla libre
+          let index = motion.findIndex((num) => num == "0");     //encontramos el index de la casilla vacia
           let nextMoviment =
-            jugadas[i][1][index].toString() + jugadas[i][2][index].toString();
+            jugadas[i][1][index].toString() + jugadas[i][2][index].toString();    //los valores de los otros array representan su posisicion en la variable panel y el objeto buttonpc guarda clave:indice de boton  valor:boton a cambiar
           buttonPanel[buttonPc[nextMoviment]].style.color = "blue";
           setTimeout(function () {
             buttonPanel[buttonPc[nextMoviment]].innerText = icon;
           }, 1000);
           buttonPanel[buttonPc[nextMoviment]].style.fontSize = "3rem";
-          panel[jugadas[i][1][index]][jugadas[i][2][index]] = icon;
+          panel[jugadas[i][1][index]][jugadas[i][2][index]] = icon;        //actualiza panel
           hasMoved = true;
           break;
         }
@@ -221,7 +228,7 @@ function movePc(jugadas, icon) {
       }
     }
   }
-  winner(icon);
+  winner(icon); //valida si hay ganador
 
   function priorityX(icon) {
     for (let i = 0; i < jugadas.length; i++) {
@@ -289,7 +296,7 @@ function priorityO(icon) {
   }
 }
 }
-
+//funcion para saber si hay un ganador
 function winner(player) {
   let winner=false
   if (panel[0][1] == player && panel[0][2] == player && panel[0][0] == player) {
@@ -324,8 +331,9 @@ function winner(player) {
     ShowWinner(player)
     winner=true
   }
+  
 if(!winner){
- let numberOfPanelFilled=0;
+ let numberOfPanelFilled=0; // en caso de que no haya ganador
  for (let i = 0; i < buttonPanel.length; i++) {
       if(buttonPanel[i].innerHTML.length!==0){
         numberOfPanelFilled++
@@ -343,7 +351,7 @@ if(numberOfPanelFilled==buttonPanel.length){
 }
 }
 }
-
+//funcion para mostrar al ganador
 function ShowWinner(player){
   setTimeout(() => {
   result[0].style.display="flex"
